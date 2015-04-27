@@ -1,0 +1,268 @@
+// @variables
+$button-tny: rem-calc(7);
+$button-sml: rem-calc(9) ;
+$button-med: rem-calc(11);
+$button-lrg: rem-calc(15);
+
+
+$button-font-color: #fff;
+$button-font-color-alt: $denim;
+$button-font-family: $sans-serif;
+$button-font-weight: 500;
+
+
+// @MIXIN
+@mixin button-base($style:true, $display:inline-block) {
+	@if $style {
+		border: none;
+		cursor: pointer;
+		font-family: $button-font-family;
+		font-weight: $button-font-weight;
+		line-height: normal;
+		margin: 0 0 rem-calc(20);
+		position: relative;
+		text-decoration: none;
+		text-align: center;
+		text-transform: uppercase;
+		letter-spacing: 0.15em;
+	}
+	@if $display { display: $display; }
+}
+
+@mixin button-size($padding:$button-med, $full-width:false, $is-input:false) {
+	@if $padding {
+		padding-top: $padding * 1.85;
+		padding-right: $padding * 4;
+		padding-bottom: $padding * 1.75;
+		padding-left: $padding * 4;
+		@if      $padding == $button-med { font-size: rem-calc(13); }
+		@else if $padding == $button-tny { font-size: rem-calc(10); padding: $padding *1.25 $padding * 2 $padding; }
+		@else if $padding == $button-sml { font-size: rem-calc(12); padding-right: $padding * 3; padding-left: $padding * 3; }
+		@else if $padding == $button-lrg { font-size: rem-calc(16); padding-right: $padding * 5; padding-left: $padding * 5;}
+	}
+
+	@if $full-width {
+		@if $padding {
+			padding-top: $padding;
+			padding-bottom: $padding;
+		}
+		@else if $padding == false {
+			padding-top:0;
+			padding-bottom:0;
+		}
+		padding-right: 0;
+		padding-left: 0;
+		width: 100%;
+	}
+	@if $is-input == $button-lrg {
+		padding-top: $is-input + rem-calc(0.75);
+		padding-bottom: $is-input + rem-calc(0.75);
+		-webkit-appearance: none;
+		font-weight: $button-font-weight !important;
+	}
+	@else if $is-input {
+		padding-top: $is-input + rem-calc(.5);
+		padding-bottom: $is-input;
+		-webkit-appearance: none;
+		font-weight: $button-font-weight !important;
+	}
+}
+
+
+// @MIXIN
+@mixin button-style($bg:$denim, $radius:true, $disabled:false, $outline:false) {
+	@if $bg {
+		$bg-lightness: lightness($bg);
+		background-color: $bg;
+		overflow: hidden;
+		position: relative;
+		z-index: 2;
+		&:after { //diagnol animated effect
+			content: '';
+			position: absolute;
+			z-index: -1;
+			width: 0%;
+			height: 200%;
+			background: rgba(255,255,255,0.1);
+			right: 0;
+			top: 0;
+			transform-origin: 0 0;
+			transform: rotate(-13deg);
+			@include single-transition();
+		}
+		&:hover,
+		&:focus  {
+			background-color: darken($bg,8%);
+			&:after {
+				width: 50%;
+			}
+		}
+		&:hover {
+			outline: none;
+		}
+		// light buttons
+		@if $bg-lightness > 70% {
+			color: $button-font-color-alt !important;
+			&:after {
+				background: rgba(0,0,0,0.05);
+			}
+			&:hover,
+			&:focus { color: $button-font-color-alt; }
+		}
+		// dark buttons
+		@else {
+			color: $button-font-color !important;
+			&:hover,
+			&:focus { color: $button-font-color; background-color: lighten($bg,10%)}
+		}
+	}
+	@if $disabled {
+		cursor: not-allowed;
+		opacity: 0.5;
+		box-shadow: none;
+		&:before, &:after { display: none !important; }
+		&:hover,
+		&:focus { background-color: $bg; }
+	}
+
+	@if $outline {
+		border: 2px solid $bg;
+		background: transparent;
+		color: $bg !important;
+		font-weight: 700;
+		&:hover, &:focus { 
+			background: transparent; 
+			color: #fff !important;
+			background: $bg;
+			@include single-transition();
+			&:after {
+				width: 110%;
+			}
+		}
+		&:after {
+			background: $bg;
+		}
+		@if lightness($bg) > 70% {
+			&:hover, &:focus { 
+				color: $button-font-color-alt !important; 
+			}
+		}
+	}
+	
+	@if $radius == true { border-radius:1000em; }
+	@else if $radius {  }
+}
+
+
+@mixin button-arrow($direction) {
+	&:before {
+		position: absolute;
+		height: 100%;
+		font-size: 15px;
+		margin-top: -7px;
+		top: 50%;
+		@include single-transition();
+		opacity: 0;
+		@include icon;
+	}
+	&:hover, &:focus {
+		&:before {
+			opacity: 1;
+		}
+	}
+
+	@if $direction == left {
+		&:before {
+			left: -18px;
+			content: "e";
+		}
+		&:hover, &:focus {
+			&:before {
+				left: 18px;
+			}
+		}
+		//change direction of diagnol effect
+		&:after {
+			right: auto;
+			left: -18px;
+		}
+	}
+
+	@if $direction == right {
+		&:before {
+			right: -18px;
+			content: "f";
+		}
+		&:hover, &:focus {
+			&:before {
+				right: 18px;
+			}
+		}
+	}
+	
+}
+
+// @MIXIN
+@mixin button($padding:$button-med, $bg:$green, $radius:true, $full-width:false, $disabled:false, $is-input:false, $is-prefix:false) {
+	@include button-base;
+	@include button-size($padding, $full-width, $is-input);
+	@include button-style($bg, $radius, $disabled);
+}
+
+
+button, .button {
+	@include button-base;
+	@include button-size;
+	@include button-style;
+
+	@include single-transition(background-color);
+	@include button-size($padding:$button-med, $full-width:false, $is-input:false);
+	
+	&.outline { @include button-style($bg:$denim, $outline:true); }
+
+	&.left-arrow { @include button-arrow($direction:left); }
+	&.right-arrow { @include button-arrow($direction:right); }
+
+	&.secondary, &.gray { @include button-style($bg:$gray); &.outline { @include button-style($bg:$gray, $outline:true); }}
+	&.poppy { 
+		@include button-style($bg:$poppy);
+		&:hover, &:focus { background-color: darken($poppy,10%)};
+		&:after {background: rgba(0,0,0,0.05);}
+		&.outline { @include button-style($bg:$poppy, $outline:true); }
+	}
+	&.mint { @include button-style($bg:$mint); &.outline { @include button-style($bg:$mint, $outline:true); }}
+	&.cloud { @include button-style($bg:$cloud); &.outline { @include button-style($bg:$cloud, $outline:true); }}
+	&.teal { 
+		@include button-style($bg:$teal);
+		&:hover, &:focus { background-color: darken($teal,5%)};
+		&:after {background: rgba(0,0,0,0.05);}
+		&.outline { @include button-style($bg:$teal, $outline:true); }
+	}
+	&.white { @include button-style($bg:#FFF); &.outline { @include button-style($bg:#FFF, $outline:true); }}
+
+
+	&.alert { @include button-style($bg:$alert-color); }
+	&.success { @include button-style($bg:$success-color); }
+	&.warning { @include button-style($bg:$warning-color); }
+	&.info { @include button-style($bg:$info-color); }
+
+	&.large  { @include button-size($padding:$button-lrg); }
+	&.small  { @include button-size($padding:$button-sml); }
+	&.tiny   { @include button-size($padding:$button-tny); }
+	&.expand { @include button-size($padding:null,$full-width:true); }
+
+	&.left-align  { text-align: left; text-indent: rem-calc(12); }
+	&.right-align { text-align: right; padding-right: rem-calc(12); }
+
+	&.radius { @include button-style($bg:false, $radius:true); }
+
+	&.disabled, &[disabled] { @include button-style($bg:#ebebeb, $disabled:true);
+		&.secondary { @include button-style($bg:$gray, $disabled:true); }
+		&.success { @include button-style($bg:$success-color, $disabled:true); }
+		&.alert { @include button-style($bg:$alert-color, $disabled:true); }
+	}
+}
+
+
+
+

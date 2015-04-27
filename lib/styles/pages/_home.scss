@@ -1,0 +1,147 @@
+/* ==========================================================================
+	!!  HERO
+	========================================================================== */
+
+
+/* ==========================================================================
+	!!  Industries
+	========================================================================== */
+	
+	//default
+	.industry-icon-grid--home {
+		margin: 4rem 0;
+		font-family: $serif;
+		font-size: 18px;
+		li { margin-bottom: 0; line-height: 1.2; }
+		a {
+			display: block;
+			margin: 1rem 0;
+			color: $onyx;
+		}
+	}
+
+	.industry--home {
+		position: relative;
+		overflow:hidden;
+	}
+
+	//poppy
+	.industry--home .poppy-bg {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		z-index: 1;
+		.intro, h3, .industry-icon-grid--home a {
+			color: #FFF;
+			@include antialias;
+		}
+		//yes, clip-path is better for this, but I want to animate a property and mask has more options
+		mask-image: url('/images/svg/angle-mask.svg');
+		mask-repeat: no-repeat;
+		mask-position: -2550px top;
+		mask-size: cover;
+		@media #{$medium-up}{
+			mask-position: -1750px top;
+		}
+	}
+	
+
+	//cloud
+	.industry--home .cloud-bg {
+		position: relative;
+		z-index: -1;
+		.lead, .industry-icon-grid--home a {
+			color: $onyx;
+		}
+	}
+
+/* ==========================================================================
+	!!  Culture Carousl
+	========================================================================== */
+	$small-height: 500px;
+	$large-height: 450px;
+
+	.culture-section {
+		position: relative;
+		height: 	$large-height;
+		&:before {
+			z-index: 11;
+			content:'';
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			background: linear-gradient(to right, rgba($onyx,0), rgba($onyx,0.75) 30%, rgba($onyx,0.75) 70%, rgba($onyx,0));
+		}
+		@media #{$small-only} {
+			height: $small-height;		
+		}
+	}
+
+	.culture-content {
+		position: relative;
+		z-index: 15;
+		@include vertical-align;
+		.intro {
+			margin-bottom: 0;
+		}
+		h3 {
+			margin-bottom: 4rem;
+			@media #{$small-only} {
+				margin-bottom: 3rem;		
+			}
+		}
+		.button {
+			margin: 0 1rem;
+			@media #{$small-only} {
+				margin: 1rem 0;		
+			}
+		}
+	}
+
+	.culture-carousel-feed {
+		opacity: 0.9;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;	
+		z-index: 10;
+		overflow: hidden;
+		height: 	$large-height;
+		@media #{$small-only} {
+			opacity: 0.6;
+			height: $small-height;			
+		}
+	}
+
+	.carousel-stage {
+		width: 1000em;
+		position: absolute;
+		top: 0;
+		figure {
+			display: block;
+			float: left;
+			width: 300px;
+			height: 	$large-height;
+			margin: 0;
+			padding: 0;
+			background-position: center center;
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+		@media #{$small-only} {
+			height: $small-height;
+			margin-left: -60px;
+			figure {
+				height: $small-height / 3;
+				width: $small-height / 3;
+				&:nth-of-type(4), &:nth-of-type(7) {
+					clear: both;
+				}
+			}
+		}
+	}
+
+

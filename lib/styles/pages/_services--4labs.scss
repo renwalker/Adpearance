@@ -1,0 +1,8 @@
+.labs-items {
+	@extend .work-feed;
+	article {
+		@media #{$medium-up}{
+			margin-bottom: 4rem !important;
+		}
+	}
+}

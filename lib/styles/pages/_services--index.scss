@@ -1,0 +1,76 @@
+.service-industry-items {
+	@media #{$small-only}{
+		.columns {
+			padding-left: 1rem;
+			padding-right: 1rem;
+		}
+	}
+	@media #{$medium-only}{
+		.columns {
+			padding-left: 1rem;
+			padding-right: 1rem;
+		}
+	}
+	article {
+		margin: 0 0 3rem;
+		background: #FFF; 
+	}
+	h4 {
+		margin: 1rem 0 0.5rem;
+		font-family: $serif;
+	}
+	p {
+		color: $gray;
+		line-height: 1.5;
+		font-family: $serif;
+	}
+	a {
+		color: $onyx;
+		&:hover {
+			color: $poppy;
+			i {
+				margin-left: 1.25rem;
+			}
+		}
+		i {
+			color: $poppy;
+			display: inline-block;
+			vertical-align: middle;
+			margin-left: 1em;
+			@include single-transition;
+		}
+	}
+	.item-content {
+		@media #{$medium-up}{
+			padding: 0rem 2rem 1.5rem;
+		}
+	}
+}
+
+
+.service-industry-toggle {
+	text-align: center;
+	margin-bottom: 2rem;
+	.toggle-name {
+		display: inline-block;
+		vertical-align: middle;
+		margin: 0 0.5rem;
+		font-size: 1.5rem;
+		color: darken($cloud,15%);
+		&.active {
+			color: $onyx;
+		}
+	}
+	.switch {
+		margin: 0;
+		display: inline-block;
+		vertical-align: middle;
+		label, input { margin: 0; }
+	}
+	@media #{$medium-up}{
+		.toggle-name {
+			font-size: 2.25rem;
+			margin: 0 1rem;
+		}
+	}
+}

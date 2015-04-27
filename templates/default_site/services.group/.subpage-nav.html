@@ -1,0 +1,7 @@
+<nav class="subpage-nav subpage-nav--services hide-for-small">
+	<dl id="subpage-nav--carousel">
+		{exp:channel:entries channel="services" dynamic="no" order_by="date" sort="asc"}
+			<dd {if segment_2==url_title} class="active" {/if}><a href="/services/{url_title}"><img src="{services_icon}" width="24" height="24" />{title}</a></dd>
+		{/exp:channel:entries}			
+	</dl>
+</nav>

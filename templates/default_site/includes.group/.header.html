@@ -1,0 +1,76 @@
+{exp:channel:entries channel="global_includes" limit="1" dynamic="no"}
+
+<header class="header--main">
+
+	<div class="row full">
+		
+		<div class="logo">
+			<!-- Icon for Smaller Screens -->
+			<div class="hide-for-large-up">
+				<a href="/"><img src="/images/svg/adpearance-icon.svg" width="60" height="60" alt="Adpearance logo" /></a>
+			</div>
+			<!-- Full Logo for Larger -->
+			<div class="show-for-large-up">
+				<a href="/"><img src="/images/svg/adpearance-logo-white.svg" width="180" alt="Adpearance logo" /></a>
+			</div>
+		</div>
+
+		<!-- Mobile Quick Links -->
+		<nav aria-label="Mobile Quick Links Menu" class="nav--mobile-quick-links show-for-small-only">
+			<!-- offcanvas sidebar for small touch devices -->
+			<ul class="nav--main" role="menubar">
+				<li role="menuitem" class="show-for-touch"><a href="tel:{global_main_phone}" tabindex="0"><i class="i-call-3"></i> Call Us</a></li>
+				<li role="menuitem" class="hide-for-touch"><a href="/contact" tabindex="0">Contact</a></li>
+				<li role="menuitem"><a href="/careers" tabindex="0">Careers {exp:stats channel="current_openings"}{if total_entries > 0}<small>({total_entries})</small>{/if}{/exp:stats}</a></li>
+				<li role="menuitem">
+					<a href="#" class="burger toggle-right-panel">
+						<span class="burger--label">More</span>
+						<span class="burger--icon"></span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+
+		<!-- Medium & Up Nav -->
+		<nav aria-label="Main menu" class="show-for-medium-up">
+			<ul class="nav--main" role="menubar">
+				<li role="menuitem"><a href="/services" tabindex="0">What We Do</a></li>
+				<li role="menuitem"><a href="/work" tabindex="0">Our Work</a></li>
+				<li role="menuitem"><a href="/about" tabindex="0">About</a></li>
+				<li role="menuitem"><a href="/blog" tabindex="0">Blog</a></li>
+				<li role="menuitem"><a href="/contact" tabindex="0" class="toggle-top">Contact</a></li>
+			</ul>
+		</nav>
+
+	</div>
+</header>
+
+
+<!-- Mobile Right Drawer -->
+<aside id="SideNav" class="show-for-small-only right-drawer-menu" style="display:none;">
+	<nav>
+		<ul class="nav--main" role="menubar">
+			<li role="menuitem"><a href="/services" tabindex="0">What We Do</a></li>
+			<li role="menuitem"><a href="/work" tabindex="0">Our Work</a></li>
+			<li role="menuitem"><a href="/about" tabindex="0">About</a></li>
+			<li role="menuitem"><a href="/blog" tabindex="0">Blog</a></li>
+			<li role="menuitem"><a href="/contact" tabindex="0">Contact</a></li>
+		</ul>
+		<ul class="social-icons circled text-right padding-tiny">
+			<li><a href="{global_facebook}" target="_blank" class="i-facebook" title="Facebook"></a></li>
+			<li><a href="{global_twitter}" target="_blank" class="i-twitter" title="Twitter"></a></li>
+			<li><a href="{global_linkedin}" target="_blank" class="i-linkedin" title="LinkedIn"></a></li>
+			<li><a href="{global_instagram}" target="_blank" class="i-instagram" title="Instagram"></a></li>
+		</ul>
+		<p itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+			{global_address}
+				<span itemprop="streetAddress">{street}</span><br>
+				<span itemprop="addressLocality">{city}</span>, <span itemprop="addressRegion">{state}</span> <span itemprop="postalCode">{zip}</span><br>
+			{/global_address}
+				<a href="mailto:{global_main_email}">{global_main_email}</a><br>
+				<span class="hide-for-touch" itemprop="telephone">{global_main_phone}</span>
+				<span class="show-for-touch" itemprop="telephone"><a href="tel:{global_main_phone}">{global_main_phone}</a></span>
+		</p>
+	</nav>
+</aside>
+{/exp:channel:entries}

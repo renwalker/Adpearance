@@ -1,0 +1,128 @@
+{exp:channel:entries channel="what_we_do" limit="1"}
+
+<section class="hero hero--page">
+	{services_main_hero_image}<div class="hero--image" data-interchange="[{image:url:small}, (default)], [{image:url:medium}, (medium)], [{image:url:large}, (large)]"></div>{/services_main_hero_image}
+	<div class="row full">
+		<div class="small-12 medium-10 medium-centered large-8 columns text-center" data-start="opacity: 1; transform: translateY(0px);" data-top-top="opacity: 0; transform: translateY(80px);">
+			<h1>{title}</h1>
+			<p class="intro">{services_main_title_intro}</p>
+		</div>
+	</div>
+</section>
+
+
+<section class="padding-medium" data-0="background-color:rgb(255,255,255);" data-800="background-color:rgb(233, 238, 242);">
+	<header class="row">
+		<div class="medium-12 columns">
+			<div class="service-industry-toggle">
+				<label class="toggle-name active" id="service-toggle">Services</label>
+				<fieldset class="switch round" tabindex="0">
+					<input id="serviceIndustry-switch" type="checkbox">
+					<label for="serviceIndustry-switch"></label>
+				</fieldset> 
+				<label class="toggle-name" id="industry-toggle">Industries</label>
+			</div>
+		</div>
+	</header>
+	<!-- Services -->
+	<div class="row service-industry-items" id="service-grid" data-equalizer>
+		{services_main_services_list}
+		<div class="small-6 medium-4 columns">
+			<article data-equalizer-watch>
+				<a href="/services/{url_title}">{services_overview_image}<img src="{image:url:grid-image}" alt="" />{/services_overview_image}</a>
+				<div class="item-content content">
+					<h4><a href="">{title}</a></h4>
+					<p>{services_overview_description}</p>
+					<a href="/services/{url_title}" class="text-link poppy">Read More <i class="i-arrow-32"></i></a>
+				</div>
+			</article>
+		</div>
+		{/services_main_services_list}
+	</div>
+	<!-- Industries -->
+	<div class="row service-industry-items" id="industry-grid" data-equalizer>
+		{services_main_industries_list}
+		<div class="small-6 medium-4 columns">
+			<article data-equalizer-watch>
+				<a href="industries/{url_title}">{industries_overview_image}<img src="{image:url:grid-image}" alt="" />{/industries_overview_image}</a>
+				<div class="item-content content">
+					<h4><a href="">{title}</a></h4>
+					<p>{industries_overview_description}</p>
+					<a href="/industries/{url_title}" class="text-link poppy">Read More <i class="i-arrow-32"></i></a>
+				</div>
+			</article>
+		</div>
+		{/services_main_industries_list}
+	</div>
+</section>
+
+
+<section class="stats" data-0="opacity:1;" data-800="opacity:1;" data-emit-events>
+	<div class="row full" data-equalizer>
+		{exp:playa:parents channel="statistics" limit="4"}
+			<div class="stat-item small-6 medium-4 large-3 columns" data-equalizer-watch>
+				{if stats_icon}{stats_icon}{/if}
+				<strong><span class="count">{stats_number}</span>{stats_metric}</strong><br>
+				<span>{title}</span>
+			</div>
+		{/exp:playa:parents}
+	</div>
+</section>
+
+
+<!-- 4Labs -->
+<section class="padding-medium">
+	<header class="row text-center">
+		<div class="medium-10 medium-centered columns">
+			<h3>{services_main_4labs_heading}</h3>
+			<p class="serif lead">{services_main_4labs_subheading}</p>
+			<div class="medium-2-cols text-left serif intro">
+				{services_main_4labs_overview}
+			</div>
+			<div class="spacer-small"></div>
+		</div>
+	</header>
+	<div class="row labs-items padding-small" data-equalizer>
+		{services_main_4labs_list}
+		<article class="medium-6 large-6 columns one-way" data-equalizer-watch data-bottom-top="transform: {switch='translateX(-200px)|translateX(200px)'}; opacity: 0.5;" data-center-top="transform: translateX(0px); opacity: 1;">
+			<a href="/tools/{url_title}">
+				<div class="work-image">
+					{4labs_overview_image}<img src="{image:url:grid-image}" alt="" />{/4labs_overview_image}
+					<div class="work-details-overlay">
+						<div class="work-details">
+							<p>{4labs_overview_description}</p>
+							<span class="text-link mint">Learn More</span>
+						</div>
+					</div>
+				</div>
+				<h5 class="work-client-name">{title}</h5>
+				<h6 class="work-category">{4labs_overview_subheading}</h6>
+			</a>
+		</article>
+		{/services_main_4labs_list}
+	</div>
+</section>
+
+
+<section class="testimonial-slider">
+	<div class="row">
+		<div class="medium-12 columns text-center">
+			<h5>{services_main_testimonial}</h5>
+		</div>
+	</div>
+	<div class="testimonial-carousel">
+		{exp:playa:parents channel="testimonials"}
+		<div class="row full">
+			<div class="medium-9 medium-centered columns">
+				<blockquote>
+					<p>{testimonials_quote}</p>
+					<cite>{testimonials_client_name}</cite>
+				</blockquote>
+			</div>
+		</div>
+		{/exp:playa:parents}
+	</div>
+</section>
+
+{/exp:channel:entries}
+

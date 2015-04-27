@@ -1,0 +1,60 @@
+.testimonial-slider {
+	padding: 3rem 0rem 2rem;
+	text-align: center;
+	background: $denim;
+	position: relative;
+	overflow: hidden;
+	&:before {
+		//content: '';
+		display: block;
+		position: absolute;
+		height: 2px;
+		width: 50%;
+		background: #FFF;
+		transform: rotate(-70deg);
+		z-index: 1;
+		opacity: 0.25;
+		top: 50%;
+		left: 0%;
+	}
+
+	@media #{$medium-up}{
+		padding: 4rem 1rem 3rem;
+	}
+	> .full { display: none; }
+	blockquote, blockquote p {
+		font-size: 1.25rem;
+		color: $mint;
+		padding: 0 2rem;
+		@include antialias;
+		@media #{$medium-up}{
+			font-size: 1.6rem;
+			padding: 0;
+		}
+		@media #{$large-up}{
+			font-size: 2.25rem;
+		}
+	}
+	cite {
+		color: #FFF;
+	}
+	h5 {
+		color: #FFF;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		margin-bottom: 2rem;
+		text-shadow: 1px 1px 0 rgba(0,0,0,0.1);
+	}
+	.owl-theme .owl-dots .owl-dot {
+		span {
+			background: transparent;
+			border: 1px solid #FFF;
+		}
+		&.active span {
+			background: #FFF;
+		}
+	}
+	.owl-theme .owl-nav .owl-prev:before, .owl-theme .owl-nav .owl-next:before {
+		color: #FFF;
+	}
+}

@@ -1,0 +1,148 @@
+/* ==========================================================================
+	!!  Subpage navigation between services, projects, etc.
+	========================================================================== */
+
+
+// arrows in hero. title of next/prev pages slide out on hover
+.subpage-nav-arrows {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0%;
+	z-index: 4;
+}
+
+.subpage-nav--next, .subpage-nav--prev {
+	@include vertical-align;
+	position: absolute;
+	color: #FFF;
+	max-width: 15%;
+	@include antialias;
+	span {
+		font-family: $serif;
+		font-style: italic;
+		font-size: 1rem;
+		text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+		line-height: 1.3;
+		display: inline-block;
+		@include single-transition();
+		opacity: 0;
+		
+	}
+	&:hover {
+		span {
+			color: $mint;
+			opacity: 1;
+			transform: translateX(0);
+		}
+		&:before, &:after {
+			opacity: 1;
+			color: $mint;
+		}
+	}
+	&:before, &:after {
+		@include icon;
+		content:'';
+		display: inline-block;
+		vertical-align: middle;
+		position: absolute;
+		font-size: 32px;
+		color: #FFF;
+		top: 50%;
+		transform: translateY(-50%);
+		opacity: 0.4;
+		@include single-transition();
+	}
+}
+
+.subpage-nav--next {
+	right: 0;
+	text-align: right;
+	padding-right: 60px;
+	&:after {
+		content: 'f';
+		right: 15px;
+	}
+	span {
+		transform: translateX(20px);
+	}
+}
+
+.subpage-nav--prev {
+	left: 0;
+	padding-left: 60px;
+	&:before {
+		content: 'e';
+		left:15px;
+	}
+	span {
+		transform: translateX(-20px);
+	}
+}
+
+
+/* ==========================================================================
+	!!  Subpage page inline nav 
+	========================================================================== */
+
+// used on service subpages
+.subpage-nav {
+	padding: 1rem 0;
+	dl {
+		margin: 0;
+		padding: 0;
+		text-align: center;
+	}
+	dd {
+		opacity: 0.4;
+		text-align: center;
+		display: inline-block;
+		margin: 0 0.75rem;
+		font-size: 10px;
+		@include single-transition;
+		position: relative;
+		@media #{$large-up} {
+			margin: 0 1.5rem;
+			font-size: 11px;
+		}
+		img {
+			display: block;
+			margin: 0 auto;
+		}
+		a {
+			text-transform: uppercase;
+			letter-spacing: 0.08em;
+			color: $onyx;
+			line-height: 1.2;
+			&:hover {
+				color: $onyx;
+			}
+		}
+		&:hover {
+			opacity: 0.8;
+		}
+		//current page
+		&.active {
+			opacity: 1;
+			cursor: default;
+			&:before {
+				@include triangle(8px, darken($denim,10%), top);
+				position: absolute;
+				top: -15px;
+				left: 50%;
+				margin-left: -8px;
+			}
+		}
+	}
+}
+
+
+.service-icon {
+	height: 24px;
+	width: 24px;
+	display: block;
+}
+
+.subpage-nav--services {
+
+}

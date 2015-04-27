@@ -1,0 +1,134 @@
+// Scrolling blog article feed
+
+.article-scrolling-feed {
+	display: block;
+	@include clearfix;
+	max-height: 600px; //skrollr fix and FOUC
+	overflow: hidden;
+	article {
+		display: block;
+		float: left;
+		width: 100%;
+		height: 500px;
+		background: #000;
+		margin: 0 1rem;
+		position: relative;
+		background-position: center top;
+		background-size: cover;
+		background-repeat: no-repeat;
+		//overlay to darken
+		&:before {
+			content: '';
+			display: block;
+			height: 100%;
+			width: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			background: rgba(black,0.1);
+		}
+		//gradient shadow
+		&:after {
+			content: '';
+			display: block;
+			height: 80%;
+			width: 100%;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			background: linear-gradient(to bottom, rgba(black,0), rgba(black,0.85) 60%);
+		}
+	}
+}
+
+.no-touch .article-scrolling-feed {
+	&:hover {
+		cursor: grab;
+	}
+	&:active {
+		cursor: grabbing;
+	}
+}
+
+.article-link { //hot spot link over image
+	display: block;
+	background: transparent;
+	position: absolute;
+	height: 50%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	outline: none;
+}
+
+.article-content {
+	z-index: 10;
+	width: 100%;
+	position: absolute;
+	padding: 3rem 3rem 2rem;
+	bottom: 0;
+}
+
+.article-category {
+	color: #fff;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	display: block;
+	margin-bottom: 1.5rem;
+	line-height: 1.2;
+	@media #{$small-only} {
+		font-size: 0.8rem;			
+	}
+}
+
+.article-title, .article-title a {
+	@include antialias;
+	font-weight: 100;
+	text-shadow: 0 0 8px rgba(black, 0.5);
+	font-family: $serif;
+	font-size: 1.6rem;
+	color: #fff;
+	line-height: 1.4;
+	display: block;
+	margin-bottom: 2rem;
+	@include single-transition;
+	&:hover {
+		color: $mint;
+	}
+	@media #{$small-only} {
+		font-size: 1.5rem;			
+	}
+}
+
+.article-author-photo {
+	border-radius: 1000em;
+	width: 50px !important;
+	height: 50px;
+	display: inline-block !important;
+	vertical-align: middle;
+	margin-right: 1.2rem;
+}
+
+.article-author, .article-author a,
+.article-case-study, .article-case-study a {
+	color: $mint;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	display: inline-block;
+	@media #{$small-only} {
+		font-size: 0.8rem;			
+	}
+}
+
+.article-case-study, .article-case-study a {
+	height: 50px;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+
+//Home Styles
+.blog-feed--home {
+	//margin-bottom: 400px;
+}
+

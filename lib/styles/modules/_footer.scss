@@ -1,0 +1,93 @@
+
+
+
+$footer-color: #999;
+
+//Footer Styles
+.footer--main {
+	width: 100%;
+	background: $onyx;
+	color: $footer-color;
+	.social-icons [class*="i-"] {
+		color: $footer-color;
+	}
+	aside {
+		background: darken($onyx,10%);
+		width: 100%;
+		display: block;
+		padding: 1rem 0;
+		font-size: 0.9rem;
+		color: #777;
+		a {
+			display: inline;
+			color: #777;
+			&:hover {
+				color:#BBB;
+			}
+		}
+	}
+}
+
+
+.footer-links {
+	padding: 3rem 0;
+	background: darken($onyx,8%);
+	color: $footer-color;
+	font-family: $serif;
+	font-size: 1.1rem;
+	@media #{$small-only} {
+		font-size: 1.2rem;
+		.text-link {
+			font-size: 1.1rem;
+		}
+	}
+	.lead {
+		@include antialias;
+		font-size: 1.25em;
+	}
+	h6 {
+		color: $mint;
+		@include antialias;
+		text-transform: uppercase;
+		margin: 1.25rem 0;
+		font-size: 0.9rem;
+		letter-spacing: 0.06em;
+		@media #{$medium-up} {
+			margin: 0.8rem 0;
+		}
+	}
+	nav {
+		@include antialias;
+		a {
+			color: $footer-color;
+			display: block;
+			padding: 0.3em 0;
+			@include single-transition;
+			&:hover {
+				color: #FFF;
+			}
+		}
+	}
+	.careers-count {
+		display: inline-block;
+		vertical-align: middle;
+		background: $poppy;
+		padding: 2px 10px;
+		border-radius: 10px;
+		margin-left: 5px;
+		font-family: $sans-serif;
+		font-size: 14px;
+		color: #FFF;
+	}
+	.adpearance-icon {
+		width: 80px;
+		@media #{$small-only} {
+			margin-bottom: 1rem;
+		}
+	}
+	address {
+		line-height: 1.4;
+		@include antialias;
+		margin-bottom: 1rem;
+	}
+}

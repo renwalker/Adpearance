@@ -1,0 +1,14 @@
+.site-index {
+  max-height: 600px;
+  overflow: scroll; }
+  .site-index li img {
+    display: none; }
+  .site-index li:hover img {
+    box-shadow: 0 0 10px #bfbfbf;
+    display: block;
+    left: 400px;
+    max-width: 800px;
+    padding: 0;
+    position: absolute;
+    top: 0px;
+    z-index: 1; }

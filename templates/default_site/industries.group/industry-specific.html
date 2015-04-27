@@ -1,0 +1,132 @@
+{exp:channel:entries channel="industries" require_entry="yes"}
+
+{if no_results}
+	{redirect="404"}
+{/if}
+
+<section class="hero hero--page hero--subpage-series">
+	{industries_hero_image}<div class="hero--image" data-interchange="[{image:url:small}, (default)], [{image:url:medium}, (medium)], [{image:url:large}, (large)]"></div>{/industries_hero_image}
+	<div class="row full">
+		<div class="small-12 medium-8 medium-centered large-7 columns text-center" data-start="opacity: 1; transform: translateY(0px);" data-top-top="opacity: 0; transform: translateY(80px);">
+			<h1>{title}</h1>
+			<p class="intro">{industries_title_subheading}</p>
+		</div>
+	</div>
+</section>
+
+
+<!-- Intro -->
+<section class="padding-medium">
+	<div class="row full">
+		<div class="medium-12 large-offset-1 large-6 columns">
+			<div class="show-for-large-up spacer-small"></div>
+			<h2 class="serif text-center large-text-left">{industries_introduction_title}</h2>
+			<div class="spacer-small"></div>
+			<div class="medium-2-cols serif intro">
+				{industries_introduction}
+			</div>
+		</div>
+		<div class="show-for-large-up large-5 columns full-collapse-right">
+			{industries_main_image}<img src="{image:url:large}" alt="" />{/industries_main_image}
+		</div>
+	</div>
+</section>
+
+
+<!-- Subservices -->
+<section class="padding-bottom-medium">
+	<div class="row">
+		<div class="medium-12 columns text-center">
+			<h3>Solutions for {title}</h3>
+			<div class="intro serif"><p>{industries_solutions_intro}</p></div>
+			<div class="spacer-small"></div>
+		</div>
+	</div>
+	<div class="row subservice-items content" data-equalizer>
+		{industries_subservices}
+		<div class="small-6 medium-4 columns" data-equalizer-watch>		
+			<article  data-bottom-top="opacity: 0;" data-center-top="opacity: 1;">
+				<img src="{subservice_image}" alt="" />
+				<h4>{subservice_title}</h4>
+				<p>{subservice_description}</p>
+			</article>
+		</div>
+		{/industries_subservices}
+	</div>
+</section>
+
+
+<!-- 4Labs -->
+<section class="padding-large gray-bg">
+	<header class="row text-center">
+		<div class="medium-10 medium-centered columns">
+			<h3>{industries_4labs_heading}</h3>
+			<div class="medium-2-cols text-left serif intro">
+				{industries_4labs_overview}
+			</div>
+			<div class="spacer-small"></div>
+		</div>
+	</header>
+	<div class="row labs-items padding-small" data-equalizer>
+		{industries_4labs_list}
+		<article class="medium-6 large-6 columns one-way" data-equalizer-watch data-bottom-top="transform: {switch='translateX(-200px)|translateX(200px)'}; opacity: 0.5;" data-center-top="transform: translateX(0px); opacity: 1;">
+			<a href="/tools/{url_title}">
+				<div class="work-image">
+					{4labs_overview_image}<img src="{image:url:grid-image}" alt="" />{/4labs_overview_image}
+					<div class="work-details-overlay">
+						<div class="work-details">
+							<p>{4labs_overview_description}</p>
+							<span class="text-link mint">Learn More</span>
+						</div>
+					</div>
+				</div>
+				<h5 class="work-client-name">{title}</h5>
+				<h6 class="work-category">{4labs_overview_subheading}</h6>
+			</a>
+		</article>
+		{/industries_4labs_list}
+	</div>
+</section>
+
+
+
+
+{if industries_show_related_work =="Yes"}
+<section class="padding-medium">
+	<header class="row">
+		<div class="medium-11 medium-centered large-10 columns text-center">
+			<h3>Related Work</h3>
+		</div>
+	</header>
+	<div class="row work-feed padding-small" data-equalizer>
+		
+		{exp:playa:parents channel="case_studies|project" order_by="date" sort="desc" status="open" limit="4"}
+			<article class="medium-6 large-6 medium-centered columns one-way reveal" data-equalizer-watch data-0="@show-section:false" data-bottom-center="@show-section:true">
+				<a href="/work/{url_title}">
+					<div class="work-image">
+						{cs_thumbnail}<img data-interchange="[{image:url:thumbnail}, (default)]" alt="{image:title}" />{/cs_thumbnail}
+						{project_thumbnail}<img data-interchange="[{image:url:thumbnail}, (default)]" alt="{image:title}" />{/project_thumbnail}
+						<div class="work-details-overlay">
+							<div class="work-details">
+								<p>{cs_short_overview}{project_short_overview}</p>
+								{if cs_client_logo} {!-- small hack to target Case Studies --}
+									<span class="text-link mint">View Case Study</span>
+								{if:else}
+									<span class="text-link mint">View Project</span>
+								{/if}
+								
+							</div>
+						</div>
+					</div>
+					<h5 class="work-client-name">{title}</h5>
+					<h6 class="work-category">{cs_services_overview}{project_services_overview}</h6>
+				</a>
+			</article>
+		{/exp:playa:parents}
+		
+	</div>
+</section>
+{/if}
+
+
+{/exp:channel:entries}

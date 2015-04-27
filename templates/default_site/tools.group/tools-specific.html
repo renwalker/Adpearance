@@ -1,0 +1,57 @@
+{exp:channel:entries channel="4labs" require_entry="yes"}
+
+{if no_results}
+	{redirect="404"}
+{/if}
+
+<section class="hero hero--page hero--subpage-series">
+	{services_hero_image}<div class="hero--image" data-interchange="[{image:url:small}, (default)], [{image:url:medium}, (medium)], [{image:url:large}, (large)]"></div>{/services_hero_image}
+	<div class="row full">
+		<div class="small-12 medium-8 medium-centered large-7 columns text-center" data-start="opacity: 1; transform: translateY(0px);" data-top-top="opacity: 0; transform: translateY(80px);">
+			<h1>{title}</h1>
+			<p class="intro">{services_title_subheading}</p>
+		</div>
+	</div>
+{/exp:channel:entries}
+
+	<div class="hide-for-small subpage-nav-arrows">
+		{exp:channel:next_entry channel="4labs"}
+		<a href="/tools/{url_title}" class="subpage-nav--next"><span>{title}</span></a>
+		{/exp:channel:next_entry}
+
+		{exp:channel:prev_entry channel="4labs"}
+		<a href="/tools/{url_title}" class="subpage-nav--prev"><span>{title}</span></a>
+		{/exp:channel:prev_entry}
+	</div>
+</section>
+
+
+{exp:channel:entries channel="4labs" require_entry="yes"}
+
+<!-- Intro -->
+<section class="padding-medium">
+	<div class="row full">
+		<div class="medium-8 medium-centered columns">
+			<a href="" class="button">Call to Action</a>
+			<div class="serif content">
+				{services_introduction}
+			</div>
+			<a href="/tools" class="button gray small">Back to Tools</a>
+		</div>
+	</div>
+</section>
+
+<!-- Gallery -->
+<section class="padding-medium">
+	<div class="row full">
+		<div class="medium-8 medium-centered columns">
+			<figure>
+
+			</figure>
+		</div>
+	</div>
+</section>
+
+
+
+{/exp:channel:entries}

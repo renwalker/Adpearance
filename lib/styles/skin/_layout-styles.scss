@@ -1,0 +1,152 @@
+/* ==========================================================================
+	!! MARGINS & PADDING
+	========================================================================== */
+	
+	$spacing-size-tiny: 20px;
+	$spacing-size-small: 40px;
+	$spacing-size-medium: 60px;
+	$spacing-size-large: 80px;
+
+	@mixin spacer($margin: 20px){
+		display: block;
+		width: 100%;
+		margin: $margin 0;
+	}
+
+	@mixin padding($padding-direction, $padding-size) {
+		@if ($padding-direction == top) {
+			padding-top: $padding-size;
+		}
+		@if ($padding-direction == bottom) {
+			padding-bottom: $padding-size;
+		}
+		@if ($padding-direction == left) {
+			padding-left: $padding-size;
+		}
+		@if ($padding-direction == right) {
+			padding-right: $padding-size;
+		}
+		@if ($padding-direction == all) {
+			padding: $padding-size;
+		}
+		@if ($padding-direction == both) {
+			padding: $padding-size 0;
+		}
+	}
+
+	.spacer-tiny { @include spacer($spacing-size-tiny); }
+	.spacer-small { @include spacer($spacing-size-small); }
+	.spacer-medium { @include spacer($spacing-size-medium); }
+	.spacer-large { @include spacer($spacing-size-large); }
+
+	.padding-tiny { @include padding(both,$spacing-size-tiny); }
+	.padding-small { @include padding(both,$spacing-size-small); }
+	.padding-medium { @include padding(both,$spacing-size-medium); }
+	.padding-large { @include padding(both,$spacing-size-large); }
+
+	.padding-top-tiny { @include padding(top, $spacing-size-tiny); }
+	.padding-top-small { @include padding(top, $spacing-size-small); }
+	.padding-top-medium { @include padding(top, $spacing-size-medium); }
+	.padding-top-large { @include padding(top, $spacing-size-large); }
+
+	.padding-bottom-tiny { @include padding(bottom, $spacing-size-tiny); }
+	.padding-bottom-small { @include padding(bottom, $spacing-size-small); }
+	.padding-bottom-medium { @include padding(bottom, $spacing-size-medium); }
+	.padding-bottom-large { @include padding(bottom, $spacing-size-large); }
+
+	.padding-left-tiny { @include padding(left, $spacing-size-tiny); }
+	.padding-left-small { @include padding(left, $spacing-size-small); }
+	.padding-left-medium { @include padding(left, $spacing-size-medium); }
+	.padding-left-large { @include padding(left, $spacing-size-large); }
+
+	.padding-right-tiny { @include padding(right, $spacing-size-tiny); }
+	.padding-right-small { @include padding(right, $spacing-size-small); }
+	.padding-right-medium { @include padding(right, $spacing-size-medium); }
+	.padding-right-large { @include padding(right, $spacing-size-large); }
+
+	.padding-all-tiny { @include padding(all, $spacing-size-tiny); }
+	.padding-all-small { @include padding(all, $spacing-size-small); }
+	.padding-all-medium { @include padding(all, $spacing-size-medium); }
+	.padding-all-large { @include padding(all, $spacing-size-large); }
+
+
+/* ==========================================================================
+	!!  COLOR BACKGROUNDS
+	========================================================================== */
+	
+	.poppy-bg { background-color: $poppy; }
+	.mint-bg { background-color: $mint; }
+	.teal-bg { background-color: $teal; }
+	.denim-bg { background-color: $denim; }
+	.onyx-bg, .black-bg { background-color: $onyx; }
+	.cloud-bg { background-color: $cloud; }
+	.gray-bg { background-color: #F7F7F7; }
+	.white-bg { background-color: #FFF; }
+
+
+
+/* ==========================================================================
+	!! COLUMNS
+	========================================================================== */
+	
+	$column-gutter: rem-calc(55) !default;
+	$max-columns: 6 !default;
+
+	@mixin column-count($columns) {
+		column-count: $columns;
+		column-gap: $column-gutter;
+		orphans: 2;
+		widows: 2;
+	}
+
+	@mixin cols($size){
+		@for $i from 1 through $max-columns {
+			.#{$size}-#{$i}-cols { 
+				@include column-count($columns:$i); 
+			}
+		}
+	}
+
+	@media #{$small-up} {
+		@include cols($size:small);
+	}
+
+	@media #{$medium-up} {
+		@include cols($size:medium);
+	}
+
+	@media #{$large-up} {
+		@include cols($size:large);
+	}
+
+	@media #{$xlarge-up} {
+		@include cols($size:xlarge);
+	}
+
+	@media #{$xxlarge-up} {
+		@include cols($size:xxlarge);
+	}
+
+
+
+/* ==========================================================================
+	!! Fade in section with Skroller
+
+	Example: 
+	<section class="one-way reveal" data-0="@show-section:false" data-bottom-center="@show-section:true">
+	========================================================================== */
+
+@media #{$medium-up} {
+	.js .reveal {
+		opacity: 0;
+		@include single-transition(opacity, 600ms, ease-out 200ms);
+	}
+
+	.js [show-section="true"] {
+		opacity: 1;
+	}
+}
+
+
+
+

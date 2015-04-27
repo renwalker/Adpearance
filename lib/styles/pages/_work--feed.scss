@@ -1,0 +1,101 @@
+.work-feed {
+	text-align: center;
+	article {
+		width: 100%;
+		margin: 1rem 0 2rem;
+		display: inline-block;
+		vertical-align: top;
+		padding: 0 1.75rem;
+		text-align: left;
+		@media #{$medium-up}{
+			width: 50%;
+		}
+	}
+	.work-image {
+		height: 0;
+		width: 100%;
+		overflow:hidden;
+		padding-bottom: 56%;
+		position: relative;
+		img {
+			width: 100%;
+			height: auto;
+			transform: scale(1.02);
+			backface-visibility: hidden;
+			@include single-transition;
+		}
+	}
+	.work-details-overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		@include single-transition;
+		background: rgba($onyx,0);
+	}
+	.work-details {
+		padding: 2rem;
+		text-align: center;
+		top: 50%;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		@include antialias;
+		p {
+			color: #FFF;
+			font-family: $serif;
+			font-size: 1.2rem;
+		}
+		p, .text-link {
+			opacity: 0;
+			transform: translateY(100px);
+			@include single-transition;
+			@media #{$medium-only}{
+				font-size: 1.1rem;
+			}
+		}
+	}
+	.work-client-name {
+		font-family: $serif;
+		font-size: 1.6rem;
+		margin: 1rem 0 0.25rem;
+	}
+	.work-category {
+		color: $poppy;
+		font-weight: 600;
+		font-size: 11.5px;
+		line-height: 1.4;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+	}
+	article > a:hover {
+		.work-image {
+			img {
+				transform: scale(1);
+			}
+		}
+		.work-details-overlay {
+			background: rgba($onyx,0.85);
+		}
+		.work-details {
+			p, .text-link {
+				opacity: 1;
+				transform: none;
+			}
+		}
+	}
+}
+
+// overlay effect only appears on non-touch devices
+@media #{$small-up}{
+	.work-details-overlay {
+		display: none; 
+	}
+}
+
+@media #{$medium-up}{
+	.no-touch .work-details-overlay {
+		display: block; 
+	}
+}

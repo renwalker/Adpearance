@@ -1,0 +1,62 @@
+.contact-footer {
+	position: relative;
+	background-color: $poppy;
+	//temp
+	
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+	background-attachment: fixed;
+	overflow: hidden;
+	h3, h4 {
+		color: #FFF;
+		font-family: $serif;
+		@include antialias;
+		margin-top: 0;
+	} 
+	h3 {
+		margin-bottom: 0.5rem;
+	}
+	h4 {
+		margin-bottom: 2rem;
+	}
+}
+
+.contact-footer-box {
+	position: relative;
+	z-index: 3;
+	background: #FFF;
+	padding: 30px;
+	text-align: center;
+	color: darken($cloud,18%);
+	font-weight: 200;
+	margin: 1rem auto;
+	@include antialias;
+	word-break: break-word; //email address
+	box-shadow: 0 2px 1px rgba(darken($poppy,20%),0.5);
+	@media #{$medium-only} {
+		margin: 0 -1rem;
+		padding: 40px 10px;
+	}
+	@media #{$large-up} {
+		padding: 60px 20px;
+	}
+	strong {
+		color: $onyx;
+		display: block;
+		margin: 1rem 0;
+	}
+	a {
+		color: $onyx;
+		text-decoration: none;
+		&:hover {
+			color: $poppy;
+		}
+	}
+	i {
+		color: darken($cloud,18%);
+		font-size: 45px;
+		display: block;
+		margin: 0 auto 2rem auto;
+	}
+}

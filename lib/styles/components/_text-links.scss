@@ -1,0 +1,34 @@
+@mixin text-link-base($color:$onyx) {
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	display: inline-block;
+	font-family: $sans-serif;
+	cursor: pointer;
+	color: $color;
+	font-weight: bold;
+	&:hover {
+		color: lighten($color,8%);
+	}
+}
+
+.text-link {
+	@include text-link-base;
+	&.secondary, &.gray { @include text-link-base($color:$gray); }
+	&.poppy { @include text-link-base($color:$poppy); }
+	&.mint { @include text-link-base($color:$mint); }
+	&.cloud { @include text-link-base($color:$cloud); }
+	&.teal { @include text-link-base($color:$teal); }
+	&.white { @include text-link-base($color:#FFF); }
+
+	&.xlarge { font-size: 1.6rem; }
+	&.large { font-size: 1.4rem; }
+	&.small {  font-size: 0.8rem; }
+
+	&.disabled, &[disabled] {
+		@include text-link-base($color:#ebebeb);
+		cursor: default;
+		&:hover {
+			$color:#ebebeb;
+		}
+	}
+}

@@ -1,0 +1,76 @@
+{exp:channel:entries channel="global_includes" limit="1" dynamic="no"}
+<footer class="footer--main" id="site-footer">
+	
+	<section class="footer-links">
+		<div class="row full small-only-text-center">
+			<div class="medium-2 large-2 columns">
+				<a href="/">
+					<img src="/images/svg/adpearance-icon.svg" width="80" height="80" class="adpearance-icon" alt="Adpearance logo" />
+				</a>
+			</div>
+			<div class="medium-7 large-7 columns">
+				<p class="lead">{global_company_description}</p>
+			</div>
+			<div class="medium-3 large-3 columns">
+				<ul class="social-icons text-center">
+					<li><a href="{global_facebook}" target="_blank" class="i-facebook-square" title="Facebook"></a></li>
+					<li><a href="{global_twitter}" target="_blank" class="i-twitter" title="Twitter"></a></li>
+					<li><a href="{global_linkedin}" target="_blank" class="i-linkedin-square" title="LinkedIn"></a></li>
+					<li><a href="{global_instagram}" target="_blank" class="i-instagram" title="Instagram"></a></li>
+					<li><a href="{global_google}" target="_blank" class="i-google-plus" title="Google+"></a></li>
+					<li><a href="{global_pinterest}" target="_blank" class="i-pinterest" title="Pinterest"></a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="row full">
+			
+			<div class="medium-2 columns small-only-text-center">
+				<h6 class="white-color">Adpearance</h6>
+				<address itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+					{global_address}
+						<span itemprop="streetAddress">{street}</span><br>
+						<span itemprop="addressLocality">{city}</span>, <span itemprop="addressRegion">{state}</span> <span itemprop="postalCode">{zip}</span><br>
+					{/global_address}
+					<span class="hide-for-touch" itemprop="telephone">{global_main_phone}</span>
+					<span class="show-for-touch" itemprop="telephone"><a href="tel:{global_main_phone}">{global_main_phone}</a></span>
+				</address>
+				<a href="/contact" class="text-link poppy small">Contact Us &rarr;</a>
+				<div class="spacer-small show-for-small-only"></div>
+			</div>
+
+			<div class="medium-10 columns">
+				<div class="row">
+					{global_footer_links}
+						<div class="small-12 medium-4 large-3 columns">
+							<h6>{link_header}</h6>
+							<nav>
+								<a href="{link_1_url}">{link_1_text}</a>
+								<a href="{link_2_url}">{link_2_text}</a>
+								<a href="{link_3_url}">{link_3_text}</a>
+								<a href="{link_4_url}">{link_4_text}
+									{if link_4_url=="/careers"}
+										{exp:stats channel="current_openings"}
+											{if total_entries > 0}
+											<span class="careers-count">{total_entries}</span>
+											{/if}
+										{/exp:stats}
+									{/if}
+								</a>
+							</nav>
+						</div>
+					{/global_footer_links}
+				</div>
+			</div>
+
+		</div>
+	</section>
+	<aside>
+		<div class="row full">
+			<div class="medium-12 columns">
+				&copy; 2009 – <?php echo date('Y') ?>, Adpearance. All rights reserved. <a href="">Privacy Policy</a> | <a href="">Site Map</a>
+			</div>
+		</div>
+	</aside>
+</footer>
+{/exp:channel:entries}

@@ -1,0 +1,90 @@
+/* ==========================================================================
+	!!  WEIGHTS AND HELPERS
+	========================================================================== */
+
+	.serif { font-family: $serif !important; }
+	.sans-serif { font-family: $sans-serif !important; }
+
+	.font-thin { font-weight: 100; }
+	.font-light { font-weight: 300; }
+	.font-regular { font-weight: 400; }
+	.font-book { font-weight: 500; }
+	.font-semibold { font-weight: 600; }
+	.font-bold { font-weight: 700; }
+	.font-extrabold { font-weight: 800; }
+	.font-black { font-weight: 900; }
+
+
+/* ==========================================================================
+	!!  COLORS
+	========================================================================== */
+	
+	.error { color: $error !important; }
+	.poppy-color { color: $poppy !important; }
+	.mint-color { color: $mint !important; }
+	.teal-color { color: $teal !important; }
+	.denim-color { color: $denim !important; }
+	.onyx-color, .black-color { color: $onyx !important; }
+	.cloud-color { color: $cloud !important; }
+	.white-color { color: #FFF !important; }
+
+
+
+/* ==========================================================================
+	!!  BASE OVERRIDES
+	========================================================================== */
+
+
+	blockquote {
+		cite {
+			font-family: $sans-serif;
+			color: #888;
+			font-style: normal;
+			text-transform: uppercase;
+			letter-spacing: 0.06em;
+		}
+	}
+	blockquote,
+	blockquote p {
+		font-family: $serif;
+		font-size: 1.25rem;
+	}
+
+
+
+/* ==========================================================================
+	!!  SPECIAL TREATMENTS
+	========================================================================== */
+	
+	.content { // improve typography for readability on chunks
+		@include antialias;
+		p {
+			//word-spacing: 0.07em;
+			letter-spacing: 0.015em;
+		}
+	}	
+	
+	.intro, .intro p { 
+		font-size: 1.2rem;
+	}
+
+	p.lead { font-size: 1rem + rem-calc(5); }
+
+
+	.small-text, p.small-text,  {
+		font-family: $sans-serif;
+		font-size: .9em;
+		letter-spacing: .04em;
+	}
+	.small-text p { font-size: 1em; } // so the p isn't doubling the smaller font-size
+
+	a.small-text { //used in other cols
+		color: lighten($body-font-color, 20%);
+		text-decoration: none;
+		&:hover { text-decoration: underline; }
+	}
+
+	.all-caps {
+		text-transform: uppercase;
+		letter-spacing: .08em;
+	}

@@ -1,0 +1,44 @@
+$icon-size: 30px;
+.social-icons {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	font-family: $sans-serif; //when parent is serif, line height is altered slightly
+	line-height: 1;
+	li {
+		display: inline-block;
+		margin: 0 8px;
+	}
+	
+	[class*="i-"] {
+		display: block;
+		width: $icon-size;
+		height: $icon-size;
+		line-height: $icon-size + 3px;
+		border-radius: 200px;
+		text-align: center;
+		font-size: 21px;
+		color: $onyx;
+		@include single-transition;
+	}
+
+	&.circled { //add background circle
+		[class*="i-"] {
+			font-size: 18px;
+			background-color: rgba(white, 0.15);
+		}
+	}
+
+	[class*="facebook"] {&:hover,&:focus, &:active { background-color: $facebook; color: #FFF !important; } }
+	[class*="twitter"] {&:hover,&:focus, &:active { background-color: $twitter; color: #FFF !important; } }
+	[class*="instagram"] {&:hover,&:focus, &:active { background-color: $instagram; color: #FFF !important; } }
+	[class*="linkedin"] {&:hover,&:focus, &:active { background-color: $linkedin; color: #FFF !important; } }
+	[class*="pinterest"] {&:hover,&:focus, &:active { background-color: $pinterest; color: #FFF !important; } }
+	[class*="youtube"] {&:hover,&:focus, &:active { background-color: $youtube; color: #FFF !important; } }
+	[class*="google-plus"] {&:hover,&:focus, &:active { background-color: $googleplus; color: #FFF !important; } }
+
+	&.text-right li { margin: 0 0 0 4px;} // change margin if container has text-right class
+
+}
+
+

@@ -1,0 +1,77 @@
+<section class="padding-large onyx-bg blog-feed--home">
+	<div class="row full">
+		<div class="small-12 text-center columns">
+			{if embed:section-title != "" }
+				<h3 class="white-color antialiased">{embed:section-title}</h3>
+			{if:else}
+				<h4 class="white-color antialiased">Recently from Adpearance</h4>
+			{/if}
+		</div>
+	</div>
+
+	<div id="article-carousel" class="article-scrolling-feed padding-top-small" data-equalizer>
+		
+		{if embed:include_case_studies == "yes"}
+
+			{exp:channel:entries channel="case_studies" dynamic="no" status="open" order_by="date" sort="desc" display_by="month" limit="2"}
+
+				{!--show entries from last 2 months--}
+				<article style="background-image:url({cs_thumbnail}{image:url:feed}{/cs_thumbnail});">
+					<a href="/work/{url_title}" class="article-link"></a>
+					<div class="article-content">
+						<span class="article-category">{title}</span>
+						<a href="/work/{url_title}" class="article-title" data-equalizer-watch>{cs_headline}</a>
+						<span class="article-case-study">View Case Study &rarr;</span>
+					</div>
+				</article>
+
+			{/exp:channel:entries}
+			
+		{/if}
+
+		
+		{if embed:filter != ""}
+
+			{exp:channel:entries channel="blog" entry_id="{embed:filter}" status="open" order_by="date" sort="desc" dynamic="no" limit="20"}
+				
+				<article style="background-image:url({blog_main_image}{image:url:feed}{/blog_main_image});">
+					<a href="/blog/{url_title}" class="article-link"></a>
+					<div class="article-content">
+						<span class="article-category">From the blog</span>
+						<a href="/blog/{url_title}" class="article-title" data-equalizer-watch>{title}</a>
+						{blog_author}
+						<a href="/blog/{url_title}">
+							{team_image}<img src="{image:url:author}" alt="Photo of {title}" class="article-author-photo" />{/team_image}
+						</a>
+						<span class="article-author">By {team_first_name}</span>
+						{/blog_author}
+					</div>
+				</article>
+
+			{/exp:channel:entries}
+
+		{if:else}
+
+			{exp:channel:entries channel="blog" status="open" order_by="date" sort="desc" dynamic="no" limit="20"}
+
+				<article style="background-image:url({blog_main_image}{image:url:feed}{/blog_main_image});">
+					<a href="/blog/{url_title}" class="article-link"></a>
+					<div class="article-content">
+						<span class="article-category">From the blog</span>
+						<a href="/blog/{url_title}" class="article-title" data-equalizer-watch>{title}</a>
+						{blog_author}
+						<a href="/blog/{url_title}">
+							{team_image}<img src="{image:url:author}" alt="Photo of {title}" class="article-author-photo" />{/team_image}
+						</a>
+						<span class="article-author">By {team_first_name}</span>
+						{/blog_author}
+					</div>
+				</article>
+
+			{/exp:channel:entries}
+		{/if}
+	
+	</div>
+
+
+</section>
